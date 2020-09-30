@@ -1,0 +1,19 @@
+{
+  "name": "celo-docs",
+  "version": "0.0.1",
+  "description": "Celo documentation",
+  "main": "index.js",
+  "authors": {
+    "name": "Barbara Liau",
+    "email": ""
+  },
+  "repository": "https://github.com/barbaraliau/celo-docs/celo-docs",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
