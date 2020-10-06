@@ -4,7 +4,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: 'Vuepress Docs Boilerplate',
+  title: 'Celo',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
@@ -27,15 +27,20 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    repo: '',
-    editLinks: false,
-    docsDir: '',
-    editLinkText: '',
+    // repo: '',
+    // editLinks: false,
+    // docsDir: '',
+    // editLinkText: '',
+    sidebarDepth: 1,
     lastUpdated: false,
     nav: [
       {
+        text: 'Introduction',
+        link: '/docs/'
+      },
+      {
         text: 'Guide',
-        link: '/guide/',
+        link: '/guide/'
       },
       {
         text: 'Config',
@@ -47,6 +52,102 @@ module.exports = {
       }
     ],
     sidebar: {
+      '/docs/': [
+        {
+          title: 'Start Here',
+          collapsable: true,
+          children: [
+            '',
+            'overview'
+          ]
+        },
+        {
+          title: 'Celo Protocol',
+          collapsable: false,
+          path: '/docs/celo-codebase/protocol/',
+          children: [
+            {
+              title: 'Consensus',
+              path: '/docs/celo-codebase/protocol/consensus/',
+              collapsable: true,
+              children: [
+                '/docs/celo-codebase/protocol/consensus/validator-set-differences',
+                '/docs/celo-codebase/protocol/consensus/locating-nodes',
+                '/docs/celo-codebase/protocol/consensus/ultralight-sync',
+              ]
+            },
+            {
+              title: 'Proof of Stake',
+              path: '/docs/celo-codebase/protocol/proof-of-stake/',
+              collapsable: true,
+              children: [
+                '/docs/celo-codebase/protocol/proof-of-stake/validator-groups',
+                '/docs/celo-codebase/protocol/proof-of-stake/locked-gold',
+                '/docs/celo-codebase/protocol/proof-of-stake/validator-elections',
+                '/docs/celo-codebase/protocol/proof-of-stake/penalties',
+                '/docs/celo-codebase/protocol/proof-of-stake/epoch-rewards',
+                '/docs/celo-codebase/protocol/proof-of-stake/validator-rewards',
+                '/docs/celo-codebase/protocol/proof-of-stake/locked-gold-rewards',
+                '/docs/celo-codebase/protocol/proof-of-stake/community-fund',
+                '/docs/celo-codebase/protocol/proof-of-stake/carbon-offsetting-fund',
+              ]
+            },
+            '/docs/celo-codebase/protocol/governance',
+            {
+              title: 'Stability',
+              path: '/docs/celo-codebase/protocol/stability/',
+              collapsable: true,
+              children: [
+                '/docs/celo-codebase/protocol/stability/doto',
+                '/docs/celo-codebase/protocol/stability/oracles',
+                '/docs/celo-codebase/protocol/stability/stability-fees',
+                '/docs/celo-codebase/protocol/stability/tobin-tax',
+              ]
+            },
+            {
+              title: 'Transactions',
+              path: '/docs/celo-codebase/protocol/transactions/',
+              collapsable: true,
+              children: [
+                '/docs/celo-codebase/protocol/transactions/native-currency',
+                '/docs/celo-codebase/protocol/transactions/erc20-transaction-fees',
+                '/docs/celo-codebase/protocol/transactions/gas-pricing',
+                '/docs/celo-codebase/protocol/transactions/escrow',
+                '/docs/celo-codebase/protocol/transactions/tx-comment-encryption',
+                '/docs/celo-codebase/protocol/transactions/full-node-incentives',
+              ]
+            },
+            {
+              title: 'Identity',
+              path: '/docs/celo-codebase/protocol/identity/',
+              collapsable: true,
+              children: [
+                '/docs/celo-codebase/protocol/identity/phone-number-privacy',
+                '/docs/celo-codebase/protocol/identity/metadata',
+                '/docs/celo-codebase/protocol/identity/randomness',
+              ]
+            }
+          ]
+        },
+        {
+          title: 'Celo Wallet',
+          collapsable: false,
+          path: '/docs/celo-codebase/wallet/',
+          children: [
+            '/docs/celo-codebase/wallet/intro',
+            '/docs/celo-codebase/wallet/how-the-wallet-works/'
+          ]
+        },
+        {
+          title: 'Disclaimers',
+          collapsable: true,
+          children: [
+            'important-information/alfajores-testnet-disclaimer',
+            'important-information/baklava-testnet-disclaimer',
+            'important-information/mainnet-network-disclaimer',
+          ]
+        }
+      ],
       '/guide/': [
         {
           title: 'Guide',
@@ -56,9 +157,11 @@ module.exports = {
             'using-vue',
           ]
         }
-      ],
+      ]
     }
   },
+
+  base: '/celo-docs/',
 
   /**
    * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
@@ -66,5 +169,15 @@ module.exports = {
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
-  ]
+  ],
+  markdown: {
+    extendMarkdown: md => {
+      md.use(require('markdown-it-html5-embed'), {
+        html5embed: {
+          useImageSyntax: true,
+          useLinkSyntax: false
+        }
+      })
+    }
+  }
 }
