@@ -1,15 +1,15 @@
 ---
 home: true
 heroImage: https://v1.vuepress.vuejs.org/hero.png
-tagline: Celo documentation
+tagline: Celo Documentation
 actionText: Quick Start →
 actionLink: /docs/
 features:
-- title: Feature 1 Title
+- title: Introduction
   details: Feature 1 Description
-- title: Feature 2 Title
+- title: Celo SDK
   details: Feature 2 Description
-- title: Feature 3 Title
+- title: Infrastructure
   details: Feature 3 Description
 footer: Made by Barbara Liau with ❤️
 ---
